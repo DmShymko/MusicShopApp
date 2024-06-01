@@ -120,12 +120,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void addToCart(View view) {
         Order order = new Order();
         order.userName = userNameEditText.getText().toString();
-        Log.d("userNameEditText", order.userName);
+        //Log.d("userNameEditText", order.userName);
         order.goodsName = goodsName;
         order.goodsQuantity = goodsQuantity;
         order.goodsPrice = goodsPrice;
         order.summaryOrder = goodsQuantity * goodsPrice;
+
         Intent orderIntent = new Intent(MainActivity.this, OrderActivity.class);
+
         orderIntent.putExtra("userNameForIntent", order.userName);
         orderIntent.putExtra("goodsNameForIntent", order.goodsName);
         orderIntent.putExtra("goodsQuantityForIntent", order.goodsQuantity);

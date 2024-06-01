@@ -25,14 +25,6 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_order);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-
-        });
-
-        setTitle("Your order");
 
         Intent recivedOrderIntent = getIntent();
         String userName = recivedOrderIntent.getStringExtra("userNameForIntent");
@@ -40,12 +32,14 @@ public class OrderActivity extends AppCompatActivity {
         int goodsQuantity = recivedOrderIntent.getIntExtra("goodsQuantityForIntent", 0);
         double goodsPrice = recivedOrderIntent.getDoubleExtra("goodsPriceForIntent", 0);
         double summaryOrder = recivedOrderIntent.getDoubleExtra("summaryOrderForIntent", 0);
+
         emailText = "Customer name: " + userName + "\n" + "Goods name: " + goodsName + "\n" +
                 "Quantity: " + goodsQuantity + "\n" + "Price: " + goodsPrice + "\n" +
                 "Ordier Price: " + summaryOrder;
-        TextView orderTextView = findViewById(R.id.orderTextView);
-        orderTextView.setText(emailText);
 
+        TextView orderTextView = findViewById(R.id.orderTextView);
+
+        orderTextView.setText(emailText);
     }
 
     @SuppressLint("QueryPermissionsNeeded")
